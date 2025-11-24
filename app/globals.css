@@ -1,26 +1,527 @@
 @import "tailwindcss";
 
+/* Font Variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-display), var(--font-inter), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  /* Electric Aqua/Sapphire/Indigo Premium Color System */
+  --background: 220 30% 3%;
+  --foreground: 0 0% 100%;
+  --card: 220 25% 5%;
+  --card-foreground: 0 0% 100%;
+  --primary: 169 90% 52%;
+  --primary-foreground: 220 30% 3%;
+  --secondary: 223 100% 62%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 220 20% 12%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 250 100% 70%;
+  --accent-foreground: 0 0% 100%;
+  --neon-pink: 320 100% 66%;
+  --border: 0 0% 100% / 0.1;
+  --radius: 1rem;
+  
+  /* Premium Colors */
+  --electric-aqua: #14F4C9;
+  --sapphire-blue: #3A7BFF;
+  --indigo-purple: #6C63FF;
+  --neon-pink: #FF5BCE;
+  --atlitos-orange: #F36B2E;
+  --deep-bg: #05060A;
+  --card-layer: #0A0C10;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.light {
+  --background: 0 0% 98%;
+  --foreground: 220 30% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 30% 10%;
+  --primary: 169 90% 42%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 223 100% 52%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 220 10% 92%;
+  --muted-foreground: 220 10% 40%;
+  --accent: 250 100% 60%;
+  --accent-foreground: 0 0% 100%;
+  --border: 220 10% 85%;
+}
+
+.dark {
+  --background: 220 30% 3%;
+  --foreground: 0 0% 100%;
+  --card: 220 25% 5%;
+  --card-foreground: 0 0% 100%;
+  --primary: 169 90% 52%;
+  --primary-foreground: 220 30% 3%;
+  --secondary: 223 100% 62%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 220 20% 12%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 250 100% 70%;
+  --accent-foreground: 0 0% 100%;
+  --border: 0 0% 100% / 0.1;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+/* Base body styles */
+body {
+  min-height: 100vh;
+  font-synthesis: none;
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark & light theme base colors */
+html:not(.dark) body {
+  background-color: #f3f4f6; /* light slate/gray */
+  color: #020617;            /* slate-950 */
+}
+
+html.dark body {
+  background-color: #020617; /* very dark slate */
+  color: #e5e7eb;            /* slate-200 */
+}
+
+/* ============================================
+   SUBTLE DIAGONAL LINE BACKGROUNDS
+   ============================================ */
+
+/* Shared line pattern – highly visible lines */
+.bg-lines-dark,
+.bg-lines-light {
+  background-size: 50px 50px;
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(148, 163, 184, 0.4) 2px,
+      transparent 2px
+    );
+}
+
+/* Dark theme: teal-ish soft glow under the cards */
+.bg-lines-dark {
+  background-color: #020617;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(20, 244, 201, 0.20), transparent 50%),
+    radial-gradient(circle at 80% 100%, rgba(58, 123, 255, 0.25), transparent 55%),
+    linear-gradient(
+      135deg,
+      rgba(148, 163, 184, 0.4) 2px,
+      transparent 2px
+    );
+}
+
+/* Light theme: visible lines with subtle color */
+.bg-lines-light {
+  background-color: #f3f4f6;
+  background-image:
+    radial-gradient(circle at 10% -10%, rgba(37, 99, 235, 0.15), transparent 50%),
+    radial-gradient(circle at 90% 110%, rgba(16, 185, 129, 0.20), transparent 55%),
+    linear-gradient(
+      135deg,
+      rgba(148, 163, 184, 0.30) 2px,
+      transparent 2px
+    );
+}
+
+/* Optional: very slow background drift so it feels alive but not distracting */
+@keyframes bg-lines-drift {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 40px 40px, -40px -40px, 80px 80px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.bg-lines-animated {
+  animation: bg-lines-drift 40s linear infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted));
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground));
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Ultra-smooth scrolling with momentum */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* Premium Glassmorphism Cards - Liquid Effect */
+.glass-card {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 15, 15, 0.8);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+/* Light theme glass card */
+.light .glass-card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.15);
+}
+
+/* Liquid gradient aura behind card */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(20, 244, 201, 0.35), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(58, 123, 255, 0.4), transparent 55%);
+  opacity: 0.16;
+  filter: blur(40px);
+  transform: translate3d(0, 0, 0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: -1;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(20, 20, 20, 0.9);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.95);
+}
+
+.light .glass-card:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.25);
+}
+
+.glass-card:hover::before {
+  opacity: 0.42;
+  transform: translate3d(8px, -8px, 0);
+}
+
+/* Premium Neon Glow Effect */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgba(20, 244, 201, 0.4),
+    rgba(58, 123, 255, 0.4),
+    rgba(108, 99, 255, 0.4)
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.glass-card:hover::before {
+  opacity: 1;
+}
+
+/* Liquid shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glass-card:hover::after {
+  opacity: 1;
+}
+
+/* Premium Typography System */
+.heading-gradient {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.text-body {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+}
+
+/* Neon Accent Shadow */
+.neon-glow {
+  box-shadow: 
+    0 0 25px rgba(20, 244, 201, 0.3),
+    0 4px 30px rgba(0, 0, 0, 0.45);
+}
+
+.neon-glow:hover {
+  box-shadow: 
+    0 0 40px rgba(20, 244, 201, 0.5),
+    0 8px 50px rgba(0, 0, 0, 0.55);
+}
+
+/* Premium Bento Grid - 12 Column System (Compact Spacing) */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+  grid-auto-rows: minmax(160px, auto);
+}
+
+/* Desktop: 12-column grid */
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+    grid-auto-rows: minmax(180px, auto);
+  }
+}
+
+/* Tablet: 6-column grid */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    grid-auto-rows: minmax(170px, auto);
+  }
+}
+
+/* Mobile: Single column stack */
+@media (max-width: 767px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    grid-auto-rows: minmax(160px, auto);
+  }
+}
+
+/* Grid span utilities with 12-column support */
+.span-1 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.span-2 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.span-3 {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.span-4 {
+  grid-column: span 4;
+  grid-row: span 1;
+}
+
+.span-6 {
+  grid-column: span 6;
+  grid-row: span 1;
+}
+
+.span-row-2 {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.span-2x2 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.span-1x2 {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.span-2x1 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+/* Desktop specific spans */
+@media (min-width: 1024px) {
+  .span-1 {
+    grid-column: span 3;
+  }
+  
+  .span-2 {
+    grid-column: span 6;
+  }
+  
+  .span-3 {
+    grid-column: span 4;
+  }
+  
+  .span-4 {
+    grid-column: span 8;
+  }
+  
+  .span-6 {
+    grid-column: span 6;
+  }
+  
+  .span-row-2 {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+  
+  .span-2x2 {
+    grid-column: span 6;
+    grid-row: span 2;
+  }
+  
+  .span-1x2 {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+  
+  .span-2x1 {
+    grid-column: span 6;
+    grid-row: span 1;
+  }
+}
+
+/* Tablet specific spans */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .span-1 {
+    grid-column: span 2;
+  }
+  
+  .span-2 {
+    grid-column: span 3;
+  }
+  
+  .span-3 {
+    grid-column: span 3;
+  }
+  
+  .span-4 {
+    grid-column: span 4;
+  }
+  
+  .span-6 {
+    grid-column: span 6;
+  }
+  
+  .span-row-2 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .span-2x2 {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+  
+  .span-1x2 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .span-2x1 {
+    grid-column: span 3;
+    grid-row: span 1;
+  }
+}
+
+/* Mobile: All cards full width */
+@media (max-width: 767px) {
+  .span-1,
+  .span-2,
+  .span-3,
+  .span-4,
+  .span-6,
+  .span-row-2,
+  .span-2x2,
+  .span-1x2,
+  .span-2x1 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
 }
