@@ -1,7 +1,7 @@
 "use client";
 
-import { Footer } from "./components/Footer";
-import { ThemeToggleFloating } from "./components/ThemeToggleFloating";
+import Footer from "@/components/layout/footer";
+import ThemeToggleFloating from "@/components/ui/theme-toggle-floating";
 import { GlowCard } from "@/components/ui/glow-card";
 import { GlobalSpotlight } from "@/components/ui/global-spotlight";
 import { Github, Linkedin, Mail, MapPin, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";

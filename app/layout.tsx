@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import "./magic-bento.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { cn } from "@/lib/utils";
 
