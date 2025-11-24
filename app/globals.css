@@ -8,20 +8,20 @@
 
 :root {
   /* Electric Aqua/Sapphire/Indigo Premium Color System */
-  --background: 220 30% 3%;
-  --foreground: 0 0% 100%;
-  --card: 220 25% 5%;
-  --card-foreground: 0 0% 100%;
+  --background: 200 30% 3%;
+  --foreground: 0 0% 95%;
+  --card: 200 40% 4%;
+  --card-foreground: 0 0% 95%;
   --primary: 169 90% 52%;
-  --primary-foreground: 220 30% 3%;
+  --primary-foreground: 200 30% 3%;
   --secondary: 223 100% 62%;
   --secondary-foreground: 0 0% 100%;
-  --muted: 220 20% 12%;
-  --muted-foreground: 0 0% 70%;
+  --muted: 200 25% 8%;
+  --muted-foreground: 0 0% 60%;
   --accent: 250 100% 70%;
   --accent-foreground: 0 0% 100%;
   --neon-pink: 320 100% 66%;
-  --border: 0 0% 100% / 0.1;
+  --border: 180 100% 50% / 0.15;
   --radius: 1rem;
   
   /* Premium Colors */
@@ -30,40 +30,48 @@
   --indigo-purple: #6C63FF;
   --neon-pink: #FF5BCE;
   --atlitos-orange: #F36B2E;
-  --deep-bg: #05060A;
-  --card-layer: #0A0C10;
+  --deep-bg: #020509;
+  --card-layer: #060D15;
+  
+  /* Background Pattern Controls */
+  --bg-lines-opacity: 0.04;
+  --bg-lines-size: 40px;
+  --bg-lines-angle: 135deg;
 }
 
 .light {
-  --background: 0 0% 98%;
-  --foreground: 220 30% 10%;
-  --card: 0 0% 100%;
-  --card-foreground: 220 30% 10%;
-  --primary: 169 90% 42%;
+  --background: 0 0% 98%;         /* Soft white */
+  --foreground: 220 20% 12%;      /* Deep charcoal */
+  --card: 0 0% 100%;              /* Pure white cards */
+  --card-foreground: 220 20% 12%; /* Deep charcoal text */
+  --primary: 169 70% 42%;         /* Slightly darker teal for better contrast */
   --primary-foreground: 0 0% 100%;
-  --secondary: 223 100% 52%;
+  --secondary: 223 80% 52%;       /* Adjusted blue for light mode */
   --secondary-foreground: 0 0% 100%;
   --muted: 220 10% 92%;
   --muted-foreground: 220 10% 40%;
-  --accent: 250 100% 60%;
+  --accent: 250 80% 55%;          /* Adjusted purple */
   --accent-foreground: 0 0% 100%;
   --border: 220 10% 85%;
+  
+  /* Light theme background pattern */
+  --bg-lines-opacity: 0.02;
 }
 
 .dark {
-  --background: 220 30% 3%;
-  --foreground: 0 0% 100%;
-  --card: 220 25% 5%;
-  --card-foreground: 0 0% 100%;
+  --background: 200 30% 3%;
+  --foreground: 0 0% 95%;
+  --card: 200 40% 4%;
+  --card-foreground: 0 0% 95%;
   --primary: 169 90% 52%;
-  --primary-foreground: 220 30% 3%;
+  --primary-foreground: 200 30% 3%;
   --secondary: 223 100% 62%;
   --secondary-foreground: 0 0% 100%;
-  --muted: 220 20% 12%;
-  --muted-foreground: 0 0% 70%;
+  --muted: 200 25% 8%;
+  --muted-foreground: 0 0% 60%;
   --accent: 250 100% 70%;
   --accent-foreground: 0 0% 100%;
-  --border: 0 0% 100% / 0.1;
+  --border: 180 100% 50% / 0.15;
 }
 
 * {
@@ -83,69 +91,48 @@ body {
 
 /* Dark & light theme base colors */
 html:not(.dark) body {
-  background-color: #f3f4f6; /* light slate/gray */
-  color: #020617;            /* slate-950 */
+  background-color: #fafafa; /* light warm gray */
+  color: #101318;            /* near-black */
 }
 
 html.dark body {
-  background-color: #020617; /* very dark slate */
-  color: #e5e7eb;            /* slate-200 */
+  background-color: #020509; /* very dark blue-black */
+  color: #E5F5F4;            /* bright readable text */
 }
 
 /* ============================================
-   SUBTLE DIAGONAL LINE BACKGROUNDS
+   SUBTLE DIAGONAL LINE PATTERN BACKGROUND
    ============================================ */
 
-/* Shared line pattern – highly visible lines */
-.bg-lines-dark,
-.bg-lines-light {
-  background-size: 50px 50px;
-  background-image:
-    linear-gradient(
-      135deg,
-      rgba(148, 163, 184, 0.4) 2px,
-      transparent 2px
-    );
+/* Diagonal line pattern - works on all pages */
+.bg-lines-pattern {
+  position: relative;
 }
 
-/* Dark theme: teal-ish soft glow under the cards */
-.bg-lines-dark {
-  background-color: #020617;
-  background-image:
-    radial-gradient(circle at 20% 0%, rgba(20, 244, 201, 0.20), transparent 50%),
-    radial-gradient(circle at 80% 100%, rgba(58, 123, 255, 0.25), transparent 55%),
-    linear-gradient(
-      135deg,
-      rgba(148, 163, 184, 0.4) 2px,
-      transparent 2px
-    );
+.bg-lines-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    var(--bg-lines-angle),
+    transparent,
+    transparent calc(var(--bg-lines-size) - 1px),
+    rgba(20, 244, 201, var(--bg-lines-opacity)) calc(var(--bg-lines-size) - 1px),
+    rgba(20, 244, 201, var(--bg-lines-opacity)) var(--bg-lines-size)
+  );
+  pointer-events: none;
 }
 
-/* Light theme: visible lines with subtle color */
-.bg-lines-light {
-  background-color: #f3f4f6;
-  background-image:
-    radial-gradient(circle at 10% -10%, rgba(37, 99, 235, 0.15), transparent 50%),
-    radial-gradient(circle at 90% 110%, rgba(16, 185, 129, 0.20), transparent 55%),
-    linear-gradient(
-      135deg,
-      rgba(148, 163, 184, 0.30) 2px,
-      transparent 2px
-    );
-}
-
-/* Optional: very slow background drift so it feels alive but not distracting */
-@keyframes bg-lines-drift {
-  0% {
-    background-position: 0 0, 0 0, 0 0;
-  }
-  100% {
-    background-position: 40px 40px, -40px -40px, 80px 80px;
-  }
-}
-
-.bg-lines-animated {
-  animation: bg-lines-drift 40s linear infinite;
+/* Light theme uses darker lines */
+.light .bg-lines-pattern::before {
+  background-image: repeating-linear-gradient(
+    var(--bg-lines-angle),
+    transparent,
+    transparent calc(var(--bg-lines-size) - 1px),
+    rgba(16, 19, 24, var(--bg-lines-opacity)) calc(var(--bg-lines-size) - 1px),
+    rgba(16, 19, 24, var(--bg-lines-opacity)) var(--bg-lines-size)
+  );
 }
 
 /* Custom scrollbar */
@@ -177,6 +164,58 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
+/* ============================================
+   ACCESSIBILITY: FOCUS STATES
+   ============================================ */
+
+/* Remove default outline, replace with custom focus ring */
+*:focus {
+  outline: none;
+}
+
+/* Custom focus-visible styles for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid rgba(20, 244, 201, 0.6);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Button focus styles */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgba(20, 244, 201, 0.6);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(20, 244, 201, 0.1);
+}
+
+/* ============================================
+   MOTION PREFERENCES
+   ============================================ */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .particle-card {
+    transform: none !important;
+  }
+  
+  .particle {
+    display: none !important;
+  }
+  
+  .particle-card-spotlight {
+    display: none !important;
+  }
+}
+
 /* Card hover effects */
 .card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -184,6 +223,12 @@ html {
 
 .card-hover:hover {
   transform: translateY(-2px);
+}
+
+.card-hover:focus-visible {
+  transform: translateY(-2px);
+  outline: 2px solid rgba(20, 244, 201, 0.6);
+  outline-offset: 4px;
 }
 
 /* Premium Glassmorphism Cards - Liquid Effect */
@@ -523,5 +568,130 @@ html {
   .span-2x1 {
     grid-column: span 1;
     grid-row: span 1;
+  }
+}
+
+/* ============================================
+   PARTICLE CARD HOVER GLOW EFFECTS
+   ============================================ */
+
+:root {
+  --glow-color: 20, 244, 201;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 300px;
+}
+
+.particle-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.particle-card-content {
+  position: relative;
+  z-index: 10;
+}
+
+.particle-card-border-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 1.2)),
+    transparent 40%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.particle-card:hover .particle-card-border-glow,
+.particle-card.glow-active .particle-card-border-glow {
+  opacity: 1;
+}
+
+.particle-card-particles {
+  position: absolute;
+  inset: -20%; /* Expand area so particles can appear around the card */
+  overflow: visible; /* Allow particles to show outside card bounds */
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(var(--glow-color), 1);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(0.5px);
+  box-shadow: 
+    0 0 6px rgba(var(--glow-color), 1),
+    0 0 12px rgba(var(--glow-color), 0.6),
+    0 0 18px rgba(var(--glow-color), 0.3);
+}
+
+.particle-card-click-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--glow-color), 0.3) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.particle-card-spotlight {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  width: calc(var(--glow-radius) * 2);
+  height: calc(var(--glow-radius) * 2);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--glow-color), 0.15) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+
+.particle-card-spotlight.active {
+  opacity: 1;
+}
+
+/* Disable animations on mobile */
+@media (max-width: 768px) {
+  .particle-card {
+    transform: none !important;
+  }
+  
+  .particle {
+    display: none;
+  }
+  
+  .particle-card-spotlight {
+    display: none;
   }
 }

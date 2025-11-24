@@ -2,7 +2,7 @@
 
 import Footer from "@/components/layout/footer";
 import ThemeToggleFloating from "@/components/ui/theme-toggle-floating";
-import { GlowCard } from "@/components/ui/glow-card";
+import { ShellCard } from "@/components/ui/shell-card";
 import { GlobalSpotlight } from "@/components/ui/global-spotlight";
 import { Github, Linkedin, Mail, MapPin, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import Link from "next/link";
@@ -18,47 +18,47 @@ export default function Home() {
       <div className="relative z-10">
         <main className="mx-auto max-w-6xl px-4 pt-10 pb-16">
           {/* Multi-row grid layout */}
-          <div className="grid gap-5 lg:grid-cols-3">
+          <div className="grid gap-6 lg:grid-cols-3">
             {/* Row 1: About (2 cols) + Connect (1 col) */}
-            <GlowCard className="lg:col-span-2">
+            <ShellCard className="lg:col-span-2 min-h-[280px] [&>div>div>div]:!pb-4">
               <AboutCardContent />
-            </GlowCard>
+            </ShellCard>
             
-            <GlowCard>
+            <ShellCard className="min-h-[280px]">
               <ConnectCardContent />
-            </GlowCard>
+            </ShellCard>
 
             {/* Row 2: Education (2 cols) + Location (1 col) */}
-            <GlowCard className="lg:col-span-2">
+            <ShellCard className="lg:col-span-2 min-h-[260px]">
               <EducationCardContent />
-            </GlowCard>
+            </ShellCard>
             
-            <GlowCard>
+            <ShellCard className="min-h-[200px]">
               <LocationCardContent />
-            </GlowCard>
+            </ShellCard>
 
             {/* Row 3: Experience (2 cols) + Skills (1 col) */}
-            <GlowCard className="lg:col-span-2">
+            <ShellCard className="lg:col-span-2 min-h-[260px]">
               <ExperienceCardContent />
-            </GlowCard>
+            </ShellCard>
             
-            <GlowCard>
+            <ShellCard className="min-h-[260px]">
               <SkillsCardContent />
-            </GlowCard>
+            </ShellCard>
 
             {/* Row 4: Featured Projects (full width) */}
-            <GlowCard className="lg:col-span-3">
+            <ShellCard className="lg:col-span-3 min-h-[260px]">
               <FeaturedProjectContent />
-            </GlowCard>
+            </ShellCard>
             
             {/* Row 5: Certifications (2 cols) + Interests (1 col) */}
-            <GlowCard className="lg:col-span-2">
+            <ShellCard className="lg:col-span-2 min-h-60">
               <CertificationsCardContent />
-            </GlowCard>
+            </ShellCard>
             
-            <GlowCard>
+            <ShellCard className="min-h-60">
               <InterestsCardContent />
-            </GlowCard>
+            </ShellCard>
           </div>
         </main>
 
@@ -75,60 +75,49 @@ export default function Home() {
 function AboutCardContent() {
   return (
     <Link href="/about" className="block h-full">
-      <motion.div
-        whileHover={{ scale: 1.005 }}
-        whileTap={{ scale: 0.995 }}
-        className="h-full flex flex-col justify-between"
-      >
-        {/* Header */}
-        <div>
-          <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-3">
-            ABOUT
-          </p>
-          
-          <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground leading-tight mb-1">
-            Abhinav Raj
-          </h3>
-          
-          <p className="text-sm md:text-base text-muted-foreground font-medium mb-3">
-            CS & Business Systems Student · iOS Developer
-          </p>
-          
-          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-4">
-            B.Tech student in Computer Science and Business Systems with a 9.52 CGPA at SRM IST. Experienced in iOS development (Swift), UI/UX design, and full-stack web development. Passionate about building responsive, data-driven applications that create real impact.
-          </p>
-        </div>
+      <div className="flex h-full flex-col">
+        <p className="mb-1.5 text-[11px] uppercase tracking-[0.22em] text-white/40">
+          ABOUT
+        </p>
+        
+        <h3 className="mb-0.5 text-[18px] font-semibold text-white">
+          Abhinav Raj
+        </h3>
+        
+        <p className="mb-3 text-[14px] font-medium text-white/80">
+          CS & Business Systems Student · iOS Developer
+        </p>
+        
+        <p className="mb-3 text-[13px] leading-6 text-white/70">
+          B.Tech student in Computer Science and Business Systems with a 9.52 CGPA at SRM IST. Experienced in iOS development (Swift), UI/UX design, and full-stack web development. Passionate about building responsive, data-driven applications that create real impact.
+        </p>
 
         {/* Meta chips */}
-        <div className="space-y-2">
-          <div className="flex flex-wrap gap-2">
-            <span className="px-3 py-1.5 rounded-full bg-muted/50 border border-border text-[11px] font-medium text-foreground">
-              SRM Institute of Science and Technology
-            </span>
-            <span className="px-3 py-1.5 rounded-full bg-muted/50 border border-border text-[11px] font-medium text-foreground">
-              CS & Business Systems
-            </span>
-            <span className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-[11px] font-medium text-primary">
-              CGPA: 9.52
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <span className="px-3 py-1.5 rounded-full bg-muted/50 border border-border text-[11px] font-medium text-foreground">
-              TechLead at Launchpad
-            </span>
-            <span className="px-3 py-1.5 rounded-full bg-muted/50 border border-border text-[11px] font-medium text-foreground">
-              Swift · UI/UX
-            </span>
-          </div>
+        <div className="mt-auto flex flex-wrap gap-2">
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-white/70">
+            SRM Institute of Science and Technology
+          </span>
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-white/70">
+            CS & Business Systems
+          </span>
+          <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-[11px] text-emerald-300">
+            CGPA: 9.52
+          </span>
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-white/70">
+            TechLead at Launchpad
+          </span>
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-white/70">
+            Swift · UI/UX
+          </span>
         </div>
 
         {/* CTA */}
-        <div className="mt-4">
-          <button className="text-sm font-medium text-primary hover:underline transition-all text-left">
+        <div className="mt-4 pt-3 border-t border-white/5">
+          <span className="inline-flex items-center gap-1 text-[13px] font-medium text-emerald-300 hover:text-emerald-200 transition-colors">
             View Full Profile →
-          </button>
+          </span>
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 }
@@ -160,45 +149,45 @@ function ConnectCardContent() {
   ];
 
   return (
-    <div className="h-full flex flex-col justify-between">
-      <div>
-        <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-3">
+    <div className="flex h-full flex-col">
+      <div className="flex-1">
+        <p className="mb-1.5 text-[11px] uppercase tracking-[0.22em] text-white/40">
           CONNECT
         </p>
-        <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
+        <h3 className="mb-2 text-[18px] font-semibold text-white">
           Let&apos;s collaborate
         </h3>
-        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+        <p className="text-[13px] leading-6 text-white/70">
           Reach out for iOS apps, AR/VR experiments, or UI design work. I&apos;m open to internships, freelance projects, and collaborations.
         </p>
       </div>
 
-      <div className="space-y-3 my-4">
+      <div className="my-4 space-y-2">
         {socialLinks.map((social, index) => (
-          <motion.a
+          <a
             key={index}
             href={social.href}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.02, x: 4 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-3 p-3 rounded-xl bg-muted/30 border border-border hover:bg-muted/50 hover:border-primary/30 transition-all group"
+            className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-2.5 transition-all hover:border-emerald-400/30 hover:bg-white/10"
           >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted/50 border border-border text-muted-foreground group-hover:text-primary group-hover:border-primary/30 transition-all">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/70 transition-all group-hover:border-emerald-400/30 group-hover:text-emerald-300">
               {social.icon}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium text-foreground">{social.label}</p>
-              <p className="text-xs text-muted-foreground truncate">{social.subtext}</p>
+              <p className="text-[13px] font-medium text-white">{social.label}</p>
+              <p className="truncate text-[12px] text-white/50">{social.subtext}</p>
             </div>
-          </motion.a>
+          </a>
         ))}
       </div>
 
       <Link href="/contact">
-        <button className="text-sm font-medium text-primary hover:underline transition-all text-left">
-          View contact details →
-        </button>
+        <div className="border-t border-white/5 pt-3.5">
+          <span className="inline-flex items-center gap-1 text-[13px] font-medium text-emerald-300 transition-colors hover:text-emerald-200">
+            View contact details →
+          </span>
+        </div>
       </Link>
     </div>
   );
@@ -225,49 +214,38 @@ function EducationCardContent() {
 
   return (
     <Link href="/academics" className="block h-full">
-      <motion.div
-        whileHover={{ scale: 1.005 }}
-        whileTap={{ scale: 0.995 }}
-        className="h-full flex flex-col"
-      >
+      <div className="flex h-full flex-col">
         <div className="mb-4">
-          <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">
+          <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-white/40">
             ACADEMICS
           </p>
-          <h3 className="text-lg md:text-xl font-semibold text-foreground">
+          <h3 className="text-[18px] font-semibold text-white">
             Education
           </h3>
         </div>
 
-        <ul className="flex-1 space-y-6 relative">
-          <div className="absolute left-2 top-3 bottom-3 w-px bg-border hidden md:block" />
-          
+        <ul className="mb-auto flex-1 space-y-4">
           {education.map((edu, index) => (
-            <li key={index} className="flex gap-4 relative">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                className="relative z-10 mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0 ring-4 ring-background/50 hidden md:block"
-              />
-              <div className="flex-1 min-w-0">
-                <p className="text-sm md:text-base font-semibold text-foreground leading-tight">
+            <li key={index} className="flex gap-4">
+              <div className="relative z-10 mt-1.5 hidden h-2.5 w-2.5 shrink-0 rounded-full bg-emerald-400 ring-4 ring-black/50 md:block" />
+              <div className="min-w-0 flex-1">
+                <p className="text-[14px] font-medium leading-tight text-white">
                   {edu.degree}
                 </p>
-                <p className="text-xs md:text-sm text-muted-foreground mt-1">
+                <p className="mt-1 text-[12px] text-white/50">
                   {edu.institution}
                 </p>
-                <div className="flex items-center gap-2 mt-1.5 text-xs text-muted-foreground flex-wrap">
+                <div className="mt-1.5 flex flex-wrap items-center gap-2 text-[12px] text-white/50">
                   <span>{edu.period}</span>
                   {edu.gpa && (
                     <>
-                      <span className="text-muted-foreground/50">•</span>
-                      <span className="text-primary font-medium">{edu.gpa}</span>
+                      <span className="text-white/30">•</span>
+                      <span className="font-medium text-emerald-300">{edu.gpa}</span>
                     </>
                   )}
                 </div>
                 {edu.description && (
-                  <p className="text-xs text-muted-foreground/80 mt-2 leading-relaxed">
+                  <p className="mt-2 text-[13px] leading-6 text-white/60">
                     {edu.description}
                   </p>
                 )}
@@ -276,15 +254,17 @@ function EducationCardContent() {
           ))}
           
           {/* St. Paul's School */}
-          <li className="text-xs text-muted-foreground/60 ml-6 md:ml-0">
+          <li className="text-[12px] text-white/40">
             St. Paul&apos;s School, Begusarai – Class 10, 80% (2020)
           </li>
         </ul>
 
-        <button className="mt-4 text-sm font-medium text-primary hover:underline transition-all text-left">
-          View Full Timeline →
-        </button>
-      </motion.div>
+        <div className="mt-6 border-t border-white/5 pt-4">
+          <span className="inline-flex items-center gap-1 text-[13px] font-medium text-emerald-300 transition-colors hover:text-emerald-200">
+            View Full Timeline →
+          </span>
+        </div>
+      </div>
     </Link>
   );
 }
@@ -293,31 +273,17 @@ function EducationCardContent() {
 function LocationCardContent() {
   return (
     <Link href="/contact" className="block h-full">
-      <motion.div
-        whileHover={{ scale: 1.005 }}
-        whileTap={{ scale: 0.995 }}
-        className="h-full flex flex-col items-center justify-center text-center"
-      >
-        <motion.div
-          animate={{
-            y: [0, -5, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="mb-4"
-        >
-          <div className="w-14 h-14 rounded-xl bg-[#3A7BFF]/10 border border-[#3A7BFF]/30 flex items-center justify-center">
-            <MapPin className="w-7 h-7 text-[#3A7BFF]" />
+      <div className="flex h-full flex-col items-center justify-center py-8 text-center">
+        <div className="mb-6">
+          <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-[#3A7BFF]/30 bg-[#3A7BFF]/10">
+            <MapPin className="h-8 w-8 text-[#3A7BFF]" />
           </div>
-        </motion.div>
+        </div>
 
-        <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">BASED IN</p>
-        <h3 className="text-xl font-bold text-foreground mb-1">Chennai</h3>
-        <p className="text-sm text-muted-foreground">Tamil Nadu, India</p>
-      </motion.div>
+        <p className="mb-3 text-[11px] uppercase tracking-[0.22em] text-white/40">BASED IN</p>
+        <h3 className="mb-2 text-[18px] font-semibold text-white">Chennai</h3>
+        <p className="text-[13px] text-white/70">Tamil Nadu, India</p>
+      </div>
     </Link>
   );
 }
@@ -343,44 +309,42 @@ function ExperienceCardContent() {
 
   return (
     <Link href="/experience" className="block h-full">
-      <motion.div
-        whileHover={{ scale: 1.005 }}
-        whileTap={{ scale: 0.995 }}
-        className="h-full flex flex-col"
-      >
+      <div className="flex h-full flex-col">
         <div className="mb-4">
-          <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">
+          <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-white/40">
             EXPERIENCE
           </p>
-          <h3 className="text-lg md:text-xl font-semibold text-foreground">
+          <h3 className="text-[18px] font-semibold text-white">
             Vocational Trainee & TechLead
           </h3>
         </div>
 
-        <div className="flex-1 space-y-5">
+        <div className="mb-auto flex-1 space-y-5">
           {experiences.map((exp, index) => (
-            <div key={index} className="space-y-2">
+            <div key={index} className="space-y-1.5">
               <div>
-                <p className="text-sm md:text-base font-semibold text-foreground leading-tight">
+                <p className="text-[14px] font-medium leading-tight text-white">
                   {exp.title} — {exp.company}
                 </p>
-                <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
+                <div className="mt-1 flex items-center gap-2 text-[12px] text-white/50">
                   <span>{exp.location}</span>
-                  <span className="text-muted-foreground/50">•</span>
+                  <span className="text-white/30">•</span>
                   <span>{exp.period}</span>
                 </div>
               </div>
-              <p className="text-xs text-muted-foreground/80 leading-relaxed">
+              <p className="text-[13px] leading-6 text-white/70">
                 {exp.description}
               </p>
             </div>
           ))}
         </div>
 
-        <button className="mt-4 text-sm font-medium text-primary hover:underline transition-all text-left">
-          View Experience →
-        </button>
-      </motion.div>
+        <div className="mt-6 border-t border-white/5 pt-4">
+          <span className="inline-flex items-center gap-1 text-[13px] font-medium text-emerald-300 transition-colors hover:text-emerald-200">
+            View Experience →
+          </span>
+        </div>
+      </div>
     </Link>
   );
 }
@@ -394,36 +358,29 @@ function SkillsCardContent() {
 
   return (
     <Link href="/about#skills" className="block h-full">
-      <motion.div
-        whileHover={{ scale: 1.005 }}
-        whileTap={{ scale: 0.995 }}
-        className="h-full flex flex-col"
-      >
-        <div className="mb-4">
-          <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">
+      <div className="flex h-full flex-col">
+        <div className="mb-5">
+          <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-white/40">
             SKILLS
           </p>
-          <h3 className="text-lg md:text-xl font-semibold text-foreground">
+          <h3 className="text-[18px] font-semibold text-white">
             Tech Stack
           </h3>
         </div>
 
-        <div className="flex-1 flex items-center">
+        <div className="flex flex-1 items-center">
           <div className="flex flex-wrap gap-2">
             {skills.map((skill, index) => (
-              <motion.span
+              <span
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.05 }}
-                className="px-3 py-1.5 rounded-full bg-muted/50 border border-border text-xs font-medium text-foreground hover:bg-muted hover:border-primary/30 transition-all"
+                className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-white/70 transition-all hover:border-emerald-400/30 hover:bg-white/10"
               >
                 {skill}
-              </motion.span>
+              </span>
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 }
@@ -451,42 +408,35 @@ function CertificationsCardContent() {
 
   return (
     <Link href="/about#certifications" className="block h-full">
-      <motion.div
-        whileHover={{ scale: 1.005 }}
-        whileTap={{ scale: 0.995 }}
-        className="h-full flex flex-col"
-      >
+      <div className="flex h-full flex-col">
         <div className="mb-4">
-          <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">
+          <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-white/40">
             CERTIFICATIONS
           </p>
-          <h3 className="text-lg md:text-xl font-semibold text-foreground">
+          <h3 className="text-[18px] font-semibold text-white">
             Achievements
           </h3>
         </div>
 
-        <ul className="flex-1 space-y-3">
+        <ul className="flex-1 space-y-2.5">
           {certifications.map((cert, index) => (
-            <motion.li
+            <li
               key={index}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
               className="flex gap-2"
             >
-              <span className="text-primary text-sm shrink-0">•</span>
+              <span className="shrink-0 text-[13px] text-emerald-300">•</span>
               <div>
-                <p className="text-sm text-foreground font-medium leading-tight">
+                <p className="text-[13px] font-medium leading-tight text-white">
                   {cert.title}
                 </p>
-                <p className="text-xs text-muted-foreground mt-0.5">
+                <p className="mt-0.5 text-[12px] text-white/50">
                   {cert.issuer}
                 </p>
               </div>
-            </motion.li>
+            </li>
           ))}
         </ul>
-      </motion.div>
+      </div>
     </Link>
   );
 }
@@ -502,34 +452,27 @@ function InterestsCardContent() {
 
   return (
     <Link href="/about#interests" className="block h-full">
-      <motion.div
-        whileHover={{ scale: 1.005 }}
-        whileTap={{ scale: 0.995 }}
-        className="h-full flex flex-col items-center justify-center text-center"
-      >
+      <div className="flex h-full flex-col items-center justify-center text-center">
         <div className="mb-4">
-          <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">
+          <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-white/40">
             BEYOND CODE
           </p>
-          <h3 className="text-lg md:text-xl font-semibold text-foreground">
+          <h3 className="text-[18px] font-semibold text-white">
             Interests
           </h3>
         </div>
 
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="flex flex-wrap justify-center gap-2">
           {interests.map((interest, index) => (
-            <motion.span
+            <span
               key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              className="px-3 py-2 rounded-full bg-primary/10 border border-primary/30 text-xs font-medium text-primary"
+              className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-[11px] font-medium text-emerald-300"
             >
               {interest}
-            </motion.span>
+            </span>
           ))}
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 }
@@ -603,105 +546,90 @@ function FeaturedProjectContent() {
 
   return (
     <div
-      className="relative h-full min-h-[300px] lg:min-h-[350px]"
+      className="relative flex h-full min-h-[300px] flex-col lg:min-h-[350px]"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      {/* Background with radial gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1)_0%,transparent_70%)] rounded-xl" />
-      
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0 bg-linear-to-br from-[#6C63FF]/10 via-[#3A7BFF]/5 to-primary/10 rounded-xl"
-        />
-      </AnimatePresence>
+      {/* Header */}
+      <div className="mb-4 flex items-center justify-between">
+        <div>
+          <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-white/40">
+            FEATURED WORK
+          </p>
+          <h3 className="text-[18px] font-semibold text-white">
+            Projects
+          </h3>
+        </div>
+        <div className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
+          <span className="text-[11px] font-medium text-white/70">
+            {currentIndex + 1} / {mediaItems.length}
+          </span>
+        </div>
+      </div>
 
-      {/* Content */}
-      <div className="relative h-full flex flex-col justify-between">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-1">
-              FEATURED WORK
+      {/* Project content */}
+      <div className="relative flex flex-1 items-end">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+          >
+            <div className="mb-3 flex flex-wrap gap-2">
+              {getTechTags(currentItem.category).map((tag, index) => (
+                <span
+                  key={index}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-white/70"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <Link href={`/projects/${currentItem.slug}`}>
+              <h4 className="mb-2 cursor-pointer text-[14px] font-medium leading-tight text-white transition-colors hover:text-emerald-300 md:text-[16px]">
+                {currentItem.title}
+              </h4>
+            </Link>
+            <p className="mb-4 text-[13px] leading-6 text-white/70">
+              {currentItem.description}
             </p>
-            <h3 className="text-sm md:text-base font-semibold text-foreground">
-              Projects
-            </h3>
-          </div>
-          <div className="px-2.5 py-1 rounded-full bg-muted/50 border border-border">
-            <span className="text-xs font-medium text-foreground">
-              {currentIndex + 1} / {mediaItems.length}
-            </span>
-          </div>
-        </div>
 
-        {/* Project content */}
-        <div className="flex-1 flex items-end mt-4">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="w-full"
-            >
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                {getTechTags(currentItem.category).map((tag, index) => (
-                  <span
-                    key={index}
-                    className="px-2.5 py-1 rounded-full bg-muted/50 border border-border text-[11px] font-medium text-muted-foreground"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <Link href={`/projects/${currentItem.slug}`}>
-                <h4 className="text-lg md:text-xl font-semibold text-foreground mb-2 leading-tight hover:text-primary transition-colors cursor-pointer">
-                  {currentItem.title}
-                </h4>
-              </Link>
-              <p className="text-xs md:text-sm text-muted-foreground mb-4 leading-relaxed">
-                {currentItem.description}
-              </p>
-
-              <div className="flex gap-1.5 mb-3">
-                {mediaItems.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className="group/indicator relative h-1 flex-1 bg-muted rounded-full overflow-hidden"
-                  >
-                    <motion.div
-                      className="absolute inset-0 bg-primary rounded-full"
-                      initial={{ scaleX: 0 }}
-                      animate={{
-                        scaleX: index === currentIndex ? 1 : 0,
-                      }}
-                      transition={{
-                        duration: index === currentIndex && isPlaying && !isHovering ? 4 : 0.3,
-                        ease: "linear",
-                      }}
-                      style={{ transformOrigin: "left" }}
-                    />
-                  </button>
-                ))}
-              </div>
-
-              <Link href="/projects">
-                <button className="text-xs font-medium text-primary hover:underline transition-all text-left">
-                  View All Projects →
+            <div className="mb-4 flex gap-1.5">
+              {mediaItems.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className="group/indicator relative h-1 flex-1 overflow-hidden rounded-full bg-white/10"
+                >
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-emerald-400"
+                    initial={{ scaleX: 0 }}
+                    animate={{
+                      scaleX: index === currentIndex ? 1 : 0,
+                    }}
+                    transition={{
+                      duration: index === currentIndex && isPlaying && !isHovering ? 4 : 0.3,
+                      ease: "linear",
+                    }}
+                    style={{ transformOrigin: "left" }}
+                  />
                 </button>
-              </Link>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+              ))}
+            </div>
+
+            <Link href="/projects">
+              <div className="border-t border-white/5 pt-4">
+                <span className="inline-flex items-center gap-1 text-[13px] font-medium text-emerald-300 transition-colors hover:text-emerald-200">
+                  View All Projects →
+                </span>
+              </div>
+            </Link>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Controls */}
@@ -709,35 +637,35 @@ function FeaturedProjectContent() {
         initial={{ opacity: 0 }}
         animate={{ opacity: isHovering ? 1 : 0 }}
         transition={{ duration: 0.2 }}
-        className="absolute inset-0 pointer-events-none rounded-xl"
+        className="pointer-events-none absolute inset-0 rounded-xl"
       >
-        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 pointer-events-none">
+        <div className="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4">
           <button
             onClick={goToPrevious}
-            className="pointer-events-auto w-10 h-10 rounded-full bg-muted/80 backdrop-blur-sm border border-border flex items-center justify-center text-foreground hover:bg-muted transition-colors"
+            className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/80 text-white backdrop-blur-sm transition-colors hover:bg-black"
             aria-label="Previous"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={goToNext}
-            className="pointer-events-auto w-10 h-10 rounded-full bg-muted/80 backdrop-blur-sm border border-border flex items-center justify-center text-foreground hover:bg-muted transition-colors"
+            className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/80 text-white backdrop-blur-sm transition-colors hover:bg-black"
             aria-label="Next"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="absolute top-0 right-0 pointer-events-none">
+        <div className="pointer-events-none absolute right-0 top-0">
           <button
             onClick={togglePlayPause}
-            className="pointer-events-auto w-10 h-10 rounded-full bg-muted/80 backdrop-blur-sm border border-border flex items-center justify-center text-foreground hover:bg-muted transition-colors"
+            className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/80 text-white backdrop-blur-sm transition-colors hover:bg-black"
             aria-label={isPlaying ? "Pause" : "Play"}
           >
             {isPlaying ? (
-              <Pause className="w-4 h-4" />
+              <Pause className="h-4 w-4" />
             ) : (
-              <Play className="w-4 h-4 ml-0.5" />
+              <Play className="ml-0.5 h-4 w-4" />
             )}
           </button>
         </div>

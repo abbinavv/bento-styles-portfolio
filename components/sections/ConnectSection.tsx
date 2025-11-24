@@ -36,22 +36,22 @@ export function ConnectSection() {
 
   return (
     <GlowCard>
-      <div className="flex h-full flex-col justify-between gap-4">
+      <div className="flex h-full flex-col gap-5 md:gap-6">
         {/* Header */}
         <div>
-          <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">
+          <p className="text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-1.5">
             CONNECT
           </p>
-          <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
+          <h2 className="text-base md:text-lg font-semibold text-foreground mb-2">
             Let&apos;s collaborate
           </h2>
-          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+          <p className="text-[11px] md:text-xs text-muted-foreground leading-relaxed">
             Reach out for iOS apps, AR/VR experiments, or UI design work. I&apos;m open to internships, freelance projects, and collaborations.
           </p>
         </div>
 
         {/* Social links */}
-        <div className="space-y-2">
+        <div className="flex-1 space-y-2">
           {socialLinks.map((social, index) => {
             const Icon = social.icon;
             return (
@@ -63,14 +63,14 @@ export function ConnectSection() {
                 aria-label={social.ariaLabel}
                 whileHover={{ scale: 1.02, x: 4 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-3 p-3 rounded-xl bg-muted/30 border border-border hover:bg-muted/50 hover:border-primary/30 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="flex items-center gap-2.5 md:gap-3 p-2.5 md:p-3 rounded-xl bg-muted/30 border border-border hover:bg-muted/50 hover:border-primary/30 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted/50 border border-border text-muted-foreground group-hover:text-primary group-hover:border-primary/30 transition-all">
-                  <Icon className="w-5 h-5" />
+                <div className="flex h-9 w-9 md:h-10 md:w-10 shrink-0 items-center justify-center rounded-lg bg-muted/50 border border-border text-muted-foreground group-hover:text-primary group-hover:border-primary/30 transition-all">
+                  <Icon className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium text-foreground">{social.label}</p>
-                  <p className="text-xs text-muted-foreground truncate">{social.handle}</p>
+                  <p className="text-xs md:text-sm font-medium text-foreground">{social.label}</p>
+                  <p className="text-[10px] md:text-xs text-muted-foreground truncate">{social.handle}</p>
                 </div>
               </motion.a>
             );

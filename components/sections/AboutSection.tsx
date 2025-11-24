@@ -38,24 +38,24 @@ export function AboutSection() {
           </div>
 
           {/* Content section */}
-          <div className="flex-1 space-y-4 md:order-2">
+          <div className="flex-1 space-y-3 md:space-y-4 md:order-2">
             {/* Header */}
             <div>
-              <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">
+              <p className="text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-1.5">
                 ABOUT
               </p>
               
-              <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground leading-tight mb-1">
+              <h1 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-1">
                 Abhinav Raj
               </h1>
               
-              <p className="text-sm md:text-base text-muted-foreground font-medium">
+              <p className="text-xs md:text-sm text-muted-foreground font-medium">
                 CS & Business Systems Student · iOS Developer
               </p>
             </div>
             
             {/* Description */}
-            <div className="space-y-3 text-xs md:text-sm text-muted-foreground leading-relaxed">
+            <div className="space-y-2 md:space-y-2.5 text-xs md:text-sm text-muted-foreground leading-relaxed">
               <p>
                 I&apos;m a B.Tech student in Computer Science and Business Systems at SRM Institute of Science and Technology with a 9.52 CGPA, specialising in iOS development, UI/UX design, and data-driven applications.
               </p>
@@ -65,14 +65,14 @@ export function AboutSection() {
             </div>
 
             {/* Badges */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 md:gap-2">
               {badges.map((badge, index) => (
                 <motion.span
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-medium border transition-colors ${
+                  className={`px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-[10px] md:text-[11px] font-medium border transition-colors ${
                     badge.includes("CGPA")
                       ? "bg-primary/10 border-primary/30 text-primary"
                       : "bg-muted/50 border-border text-foreground"

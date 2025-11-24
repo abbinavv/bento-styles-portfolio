@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { LayoutClient } from "@/components/layout/layout-client";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({
@@ -29,21 +30,18 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={cn(inter.variable, spaceGrotesk.variable)}>
       <body className="antialiased">
         <ThemeProvider>
-          {/* Background layer – applies to ALL pages */}
-          <div
-            className={cn(
-              'fixed inset-0 -z-10',
-              // light theme first, overridden by .dark
-              'bg-lines-light bg-lines-animated',
-              'dark:bg-lines-dark dark:bg-lines-animated'
-            )}
-            aria-hidden="true"
-          />
-          
-          {/* App shell */}
-          <div className="relative min-h-screen">
-            {children}
-          </div>
+          <LayoutClient>
+            {/* Background layer – applies to ALL pages */}
+            <div
+              className="fixed inset-0 -z-10 bg-lines-pattern"
+              aria-hidden="true"
+            />
+            
+            {/* App shell */}
+            <div className="relative min-h-screen">
+              {children}
+            </div>
+          </LayoutClient>
         </ThemeProvider>
       </body>
     </html>

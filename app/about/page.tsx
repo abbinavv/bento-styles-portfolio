@@ -1,223 +1,195 @@
-import { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft, MapPin } from "lucide-react";
 import ThemeToggleFloating from "@/components/ui/theme-toggle-floating";
 import Footer from "@/components/layout/footer";
-
-export const metadata: Metadata = {
-  title: "About | Abhinav Raj",
-  description: "Learn more about Abhinav Raj - iOS developer and CS student building thoughtful mobile and web experiences.",
-};
+import { ShellCard } from "@/components/ui/shell-card";
+import { GlobalSpotlight } from "@/components/ui/global-spotlight";
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Global Spotlight Effect */}
+      <GlobalSpotlight radius={300} glowColor="20, 244, 201" />
       <ThemeToggleFloating />
-      <main className="min-h-screen">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-16 lg:px-8">
-          {/* Back button */}
-          <Link
-            href="/"
-            className="group inline-flex w-fit items-center gap-2 rounded-lg border backdrop-blur-sm transition-all
-              bg-white/80 border-slate-200/80 text-slate-700 hover:border-[#14F4C9]/40 hover:bg-[#14F4C9]/10 hover:text-[#14F4C9]
-              dark:bg-white/5 dark:border-white/10 dark:text-zinc-400 dark:hover:border-[#14F4C9]/30 dark:hover:bg-[#14F4C9]/10 dark:hover:text-[#14F4C9]
-              px-4 py-2 text-sm"
-          >
-            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to overview
-          </Link>
-
-          {/* Hero */}
-          <section className="grid gap-6 md:grid-cols-[1.5fr,0.8fr]">
-            <div className="rounded-3xl border backdrop-blur-xl transition-colors
-              bg-white/80 border-slate-200/80 shadow-[0_18px_45px_rgba(15,23,42,0.10)]
-              dark:bg-slate-900/60 dark:border-[#14F4C9]/10 dark:shadow-[0_0_60px_rgba(20,244,201,0.1)]
-              p-8"
+      
+      <div className="relative z-10">
+        <main className="min-h-screen">
+          <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 lg:px-8">
+            {/* Back button */}
+            <Link
+              href="/"
+              className="group inline-flex w-fit items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-400 backdrop-blur-sm transition-all hover:border-[#14F4C9]/30 hover:bg-[#14F4C9]/10 hover:text-[#14F4C9]"
             >
-              <p className="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-zinc-500">
-                About
-              </p>
-              <h1 className="mt-4 text-2xl font-semibold tracking-tight md:text-3xl text-slate-900 dark:text-white">
-                Abhinav Raj
-              </h1>
-              <p className="mt-1 text-sm font-medium text-[#14F4C9]">
-                CS &amp; Business Systems Student · iOS Developer
-              </p>
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-700 dark:text-zinc-300">
-                B.Tech student in Computer Science and Business Systems at SRM IST with a 9.52 CGPA. 
-                Experienced in iOS development (Swift), UI/UX design, and full-stack web development. 
-                Passionate about building responsive, data-driven applications that create real impact.
-              </p>
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              Back to overview
+            </Link>
 
-              <div className="mt-6 flex flex-wrap gap-2 text-xs">
-                <span className="rounded-full border px-3 py-1.5 transition-colors
-                  bg-slate-50/80 text-slate-700 border-slate-200
-                  dark:bg-black/40 dark:text-zinc-300 dark:border-white/10"
-                >
-                  SRM Institute of Science and Technology
-                </span>
-                <span className="rounded-full border px-3 py-1.5 transition-colors
-                  bg-slate-50/80 text-slate-700 border-slate-200
-                  dark:bg-black/40 dark:text-zinc-300 dark:border-white/10"
-                >
-                  CS &amp; Business Systems
-                </span>
-                <span className="rounded-full border border-[#3A7BFF]/30 bg-[#3A7BFF]/10 px-3 py-1.5 font-semibold text-[#3A7BFF]">
-                  CGPA: 9.52
-                </span>
-                <span className="rounded-full border px-3 py-1.5 transition-colors
-                  bg-slate-50/80 text-slate-700 border-slate-200
-                  dark:bg-black/40 dark:text-zinc-300 dark:border-white/10"
-                >
-                  TechLead at Launchpad
-                </span>
-                <span className="rounded-full border px-3 py-1.5 transition-colors
-                  bg-slate-50/80 text-slate-700 border-slate-200
-                  dark:bg-black/40 dark:text-zinc-300 dark:border-white/10"
-                >
-                  Swift · UI/UX
-                </span>
-              </div>
-            </div>
+            {/* Hero Section in Grid */}
+            <div className="grid gap-6 lg:grid-cols-3">
+              {/* Main About Card - 2 cols */}
+              <ShellCard className="lg:col-span-2">
+                <div className="flex h-full flex-col">
+                  <p className="mb-1.5 text-[11px] uppercase tracking-[0.22em] text-white/40">
+                    ABOUT
+                  </p>
+                  <h1 className="mb-0.5 text-2xl font-semibold tracking-tight text-white md:text-3xl">
+                    Abhinav Raj
+                  </h1>
+                  <p className="mb-3 text-sm font-medium text-[#14F4C9]">
+                    CS &amp; Business Systems Student · iOS Developer
+                  </p>
+                  <p className="mb-4 text-sm leading-relaxed text-white/70">
+                    B.Tech student in Computer Science and Business Systems at SRM IST with a 9.52 CGPA. 
+                    Experienced in iOS development (Swift), UI/UX design, and full-stack web development. 
+                    Passionate about building responsive, data-driven applications that create real impact.
+                  </p>
 
-            {/* Avatar + Location card */}
-            <div className="flex flex-col gap-6">
-              <div className="relative flex-1 overflow-hidden rounded-3xl border backdrop-blur-md transition-colors
-                bg-white/80 border-slate-200/80 shadow-[0_18px_45px_rgba(15,23,42,0.10)]
-                dark:bg-slate-900/60 dark:border-[#14F4C9]/10
-                p-6"
-              >
-                <div className="mx-auto w-32 h-32 rounded-full bg-linear-to-br from-[#14F4C9]/20 via-[#3A7BFF]/20 to-[#6C63FF]/20 p-1 shadow-[0_0_30px_rgba(20,244,201,0.3)]">
-                  <div className="flex h-full w-full items-center justify-center rounded-full 
-                    bg-slate-100 dark:bg-zinc-900"
-                  >
-                    <span className="text-5xl">👨‍💻</span>
+                  <div className="mt-auto flex flex-wrap gap-2 text-xs">
+                    <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-white/70">
+                      SRM Institute of Science and Technology
+                    </span>
+                    <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-white/70">
+                      CS &amp; Business Systems
+                    </span>
+                    <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 font-semibold text-emerald-300">
+                      CGPA: 9.52
+                    </span>
+                    <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-white/70">
+                      TechLead at Launchpad
+                    </span>
+                    <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-white/70">
+                      Swift · UI/UX
+                    </span>
                   </div>
                 </div>
-                <p className="mt-4 text-center text-xs text-slate-500 dark:text-zinc-500">
-                  Professional headshot placeholder
-                </p>
-              </div>
-              
-              <div className="rounded-3xl border backdrop-blur-md transition-colors
-                bg-white/80 border-slate-200/80 shadow-[0_18px_45px_rgba(15,23,42,0.10)]
-                dark:bg-slate-900/60 dark:border-white/10
-                p-6"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#14F4C9]/10">
-                    <MapPin className="h-5 w-5 text-[#14F4C9]" />
+              </ShellCard>
+
+              {/* Location Card - 1 col */}
+              <ShellCard className="min-h-[200px]">
+                <div className="flex h-full flex-col items-center justify-center py-8 text-center">
+                  <div className="mb-6">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-[#3A7BFF]/30 bg-[#3A7BFF]/10">
+                      <MapPin className="h-8 w-8 text-[#3A7BFF]" />
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-zinc-200">Based in</p>
-                    <p className="text-xs text-zinc-400">Chennai, India</p>
+
+                  <p className="mb-3 text-[11px] uppercase tracking-[0.22em] text-white/40">BASED IN</p>
+                  <h3 className="mb-2 text-[18px] font-semibold text-white">Chennai</h3>
+                  <p className="text-[13px] text-white/70">Tamil Nadu, India</p>
+                </div>
+              </ShellCard>
+            </div>
+
+            {/* Now / What I'm doing */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <ShellCard>
+                <div className="flex h-full flex-col">
+                  <h2 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
+                    Currently
+                  </h2>
+                  <div className="space-y-4 text-sm text-white/70">
+                    <p className="leading-relaxed">
+                      <span className="font-medium text-white">B.Tech in CS &amp; Business Systems</span> at SRM IST (2023–2027)
+                    </p>
+                    <p className="leading-relaxed">
+                      Building iOS apps and prototypes with Swift, Storyboard, and AR/VR concepts.
+                    </p>
+                    <p className="leading-relaxed">
+                      <span className="font-medium text-white">TechLead at Launchpad Club</span> – leading tech initiatives, 
+                      mentoring juniors, and running startup events.
+                    </p>
+                  </div>
+                </div>
+              </ShellCard>
+
+              <ShellCard>
+                <div className="flex h-full flex-col">
+                  <h2 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
+                    Focus Areas
+                  </h2>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    <span className="rounded-full border border-[#14F4C9]/30 bg-[#14F4C9]/10 px-3 py-1.5 font-medium text-[#14F4C9]">
+                      iOS Development
+                    </span>
+                    <span className="rounded-full border border-[#3A7BFF]/30 bg-[#3A7BFF]/10 px-3 py-1.5 font-medium text-[#3A7BFF]">
+                      UI/UX &amp; Product Thinking
+                    </span>
+                    <span className="rounded-full border border-[#6C63FF]/30 bg-[#6C63FF]/10 px-3 py-1.5 font-medium text-[#6C63FF]">
+                      Full-stack Web
+                    </span>
+                    <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-white/70">
+                      AR/VR Experiments
+                    </span>
+                    <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-white/70">
+                      Data-driven Applications
+                    </span>
+                  </div>
+                </div>
+              </ShellCard>
+            </div>
+
+            {/* Short timeline */}
+            <ShellCard className="lg:col-span-3">
+              <div className="flex h-full flex-col">
+                <h2 className="mb-6 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
+                  Timeline
+                </h2>
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="h-2 w-2 rounded-full bg-[#14F4C9] ring-4 ring-[#14F4C9]/20"></div>
+                      <div className="w-px flex-1 bg-white/10 mt-2"></div>
+                    </div>
+                    <div className="pb-4">
+                      <p className="text-xs text-white/40">2025</p>
+                      <p className="mt-1 text-sm font-medium text-white">Vocational Trainee at BSNL</p>
+                      <p className="text-xs text-white/50">Bihar, India</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="h-2 w-2 rounded-full bg-[#3A7BFF] ring-4 ring-[#3A7BFF]/20"></div>
+                      <div className="w-px flex-1 bg-white/10 mt-2"></div>
+                    </div>
+                    <div className="pb-4">
+                      <p className="text-xs text-white/40">2023</p>
+                      <p className="mt-1 text-sm font-medium text-white">TechLead at Launchpad Club</p>
+                      <p className="text-xs text-white/50">SRM IST, Chennai</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="h-2 w-2 rounded-full bg-[#6C63FF] ring-4 ring-[#6C63FF]/20"></div>
+                      <div className="w-px flex-1 bg-white/10 mt-2"></div>
+                    </div>
+                    <div className="pb-4">
+                      <p className="text-xs text-white/40">2023</p>
+                      <p className="mt-1 text-sm font-medium text-white">Joined SRM IST</p>
+                      <p className="text-xs text-white/50">CS &amp; Business Systems</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="h-2 w-2 rounded-full bg-white/30 ring-4 ring-white/10"></div>
+                    </div>
+                    <div>
+                      <p className="text-xs text-white/40">2022</p>
+                      <p className="mt-1 text-sm font-medium text-white">Completed Higher Secondary</p>
+                      <p className="text-xs text-white/50">PCM + IP, 87%</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-
-          {/* Now / What I'm doing */}
-          <section className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-3xl border border-white/5 bg-zinc-900/60 p-7 backdrop-blur-md">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                Currently
-              </h2>
-              <div className="mt-4 space-y-4 text-sm text-zinc-300">
-                <p className="leading-relaxed">
-                  <span className="font-medium text-zinc-200">B.Tech in CS &amp; Business Systems</span> at SRM IST (2023–2027)
-                </p>
-                <p className="leading-relaxed">
-                  Building iOS apps and prototypes with Swift, Storyboard, and AR/VR concepts.
-                </p>
-                <p className="leading-relaxed">
-                  <span className="font-medium text-zinc-200">TechLead at Launchpad Club</span> – leading tech initiatives, 
-                  mentoring juniors, and running startup events.
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-white/5 bg-zinc-900/60 p-7 backdrop-blur-md">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                Focus Areas
-              </h2>
-              <div className="mt-4 flex flex-wrap gap-2 text-xs">
-                <span className="rounded-full border border-[#14F4C9]/30 bg-[#14F4C9]/10 px-3 py-1.5 font-medium text-[#14F4C9]">
-                  iOS Development
-                </span>
-                <span className="rounded-full border border-[#3A7BFF]/30 bg-[#3A7BFF]/10 px-3 py-1.5 font-medium text-[#3A7BFF]">
-                  UI/UX &amp; Product Thinking
-                </span>
-                <span className="rounded-full border border-[#6C63FF]/30 bg-[#6C63FF]/10 px-3 py-1.5 font-medium text-[#6C63FF]">
-                  Full-stack Web
-                </span>
-                <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-zinc-300">
-                  AR/VR Experiments
-                </span>
-                <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-zinc-300">
-                  Data-driven Applications
-                </span>
-              </div>
-            </div>
-          </section>
-
-          {/* Short timeline */}
-          <section className="rounded-3xl border border-white/5 bg-zinc-900/60 p-7 backdrop-blur-md">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-              Timeline
-            </h2>
-            <div className="mt-6 space-y-4">
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="h-2 w-2 rounded-full bg-[#14F4C9] ring-4 ring-[#14F4C9]/20"></div>
-                  <div className="w-px flex-1 bg-white/10 mt-2"></div>
-                </div>
-                <div className="pb-4">
-                  <p className="text-xs text-zinc-500">2025</p>
-                  <p className="mt-1 text-sm font-medium text-zinc-200">Vocational Trainee at BSNL</p>
-                  <p className="text-xs text-zinc-400">Bihar, India</p>
-                </div>
-              </div>
-              
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="h-2 w-2 rounded-full bg-[#3A7BFF] ring-4 ring-[#3A7BFF]/20"></div>
-                  <div className="w-px flex-1 bg-white/10 mt-2"></div>
-                </div>
-                <div className="pb-4">
-                  <p className="text-xs text-zinc-500">2023</p>
-                  <p className="mt-1 text-sm font-medium text-zinc-200">TechLead at Launchpad Club</p>
-                  <p className="text-xs text-zinc-400">SRM IST, Chennai</p>
-                </div>
-              </div>
-              
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="h-2 w-2 rounded-full bg-[#6C63FF] ring-4 ring-[#6C63FF]/20"></div>
-                  <div className="w-px flex-1 bg-white/10 mt-2"></div>
-                </div>
-                <div className="pb-4">
-                  <p className="text-xs text-zinc-500">2023</p>
-                  <p className="mt-1 text-sm font-medium text-zinc-200">Joined SRM IST</p>
-                  <p className="text-xs text-zinc-400">CS &amp; Business Systems</p>
-                </div>
-              </div>
-              
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="h-2 w-2 rounded-full bg-white/30 ring-4 ring-white/10"></div>
-                </div>
-                <div>
-                  <p className="text-xs text-zinc-500">2022</p>
-                  <p className="mt-1 text-sm font-medium text-zinc-200">Completed Higher Secondary</p>
-                  <p className="text-xs text-zinc-400">PCM + IP, 87%</p>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
-      <Footer />
-    </>
+            </ShellCard>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </div>
   );
 }

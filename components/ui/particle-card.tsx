@@ -123,17 +123,32 @@ export function ParticleCard({
       if (enableStars && particlesRef.current) {
         const particleElements = particlesRef.current.querySelectorAll(".particle");
         particleElements.forEach((particle, i) => {
+          // Distribute particles evenly across the entire card area
+          // Create a grid-like distribution with randomness
+          const gridSize = Math.ceil(Math.sqrt(particleCount));
+          const gridX = (i % gridSize) / gridSize;
+          const gridY = Math.floor(i / gridSize) / gridSize;
+          
+          // Add randomness to grid position (±30%)
+          const randomOffsetX = (Math.random() - 0.5) * 60;
+          const randomOffsetY = (Math.random() - 0.5) * 60;
+          
+          const targetX = (gridX * 100) + randomOffsetX;
+          const targetY = (gridY * 100) + randomOffsetY;
+          
           gsap.fromTo(
             particle,
             {
               opacity: 0,
               scale: 0,
-              x: Math.random() * 100 + "%",
-              y: Math.random() * 100 + "%",
+              x: "50%",
+              y: "50%",
             },
             {
-              opacity: 0.8,
-              scale: 1,
+              opacity: 1, // Full opacity
+              scale: 1.2, // Slightly larger
+              x: `${targetX}%`,
+              y: `${targetY}%`,
               duration: particles[i]?.duration || 2,
               delay: particles[i]?.delay || 0,
               ease: "power2.out",
@@ -215,6 +230,7 @@ export function ParticleCard({
     clickEffect,
     particles,
     isMobile,
+    particleCount,
   ]);
 
   return (
